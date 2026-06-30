@@ -63,3 +63,51 @@ Total Fields: 20
 5. `sales`, `profit`, and `discount` are considered continuous numerical measures.
 6. `customer_rating` is assumed to be a score on a fixed scale and is treated as a numerical measure.
 7. No missing values or duplicate records were identified during the initial inspection.
+
+# Task 2
+# Calculated Fields Explanation
+
+## 1. Profit Margin
+
+**Formula:**
+
+SUM([Profit]) / SUM([Sales])
+
+# 2. Cost
+
+**Formula:**
+
+SUM([Sales]) - SUM([Profit])
+
+Purpose:
+Calculates the estimated cost incurred to generate sales.
+
+# 3. Average Order Value (AOV)
+
+**Formula:**
+
+SUM([Sales]) / COUNTD([Order ID])
+
+Purpose:
+Calculates the average revenue generated per order.
+
+# 4. Return Rate
+
+**Formula:**
+
+SUM([Return Flag]) / COUNT([Order ID])
+
+Purpose:
+Measures the proportion of orders that were returned.
+
+# 5. Shipping Delay Bucket
+
+**Formula:**
+
+IF [Delivery Days] <= 3 THEN "Fast (0-3 Days)"
+ELSEIF [Delivery Days] <= 7 THEN "Standard (4-7 Days)"
+ELSE "Delayed (8+ Days)"
+END
+
+Purpose:
+Groups delivery times into meaningful categories.
